@@ -33,19 +33,23 @@ public class MainActivityJava extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         initViews();
-        new CountDownTimer(5000, 1000) {
+         new CountDownTimer(5000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
                 bookITextView.setVisibility(GONE);
-                loadingProgressBar.setVisibility(GONE);
-                rootView.setBackgroundColor(ContextCompat.getColor(MainActivityJava.this, R.color.colorSplashText));
-                bookIconImageView.setImageResource(R.drawable.background_color_book);
-                startAnimation();
+                loadingProgressBar.setVisibility(VISIBLE);
+                bookIconImageView.setImageResource(R.drawable.white_book_icon);
+                rootView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorBackground));
+
             }
 
             @Override
             public void onFinish() {
+                bookIconImageView.setImageResource(R.drawable.background_color_book);
+                rootView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorSplashText));
+                loadingProgressBar.setVisibility(GONE);
+                startAnimation();
 
             }
         }.start();
